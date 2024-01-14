@@ -34,13 +34,14 @@ public class StudentController {
     }
     
     @PostMapping
-    public void saveUpdate(@RequestBody Student student){
+    public Student saveUpdate(@RequestBody Student student){
         studentService.saveOrUpdate(student);
+        return student;
     }
 
 
     @DeleteMapping("/{student_id}")
-    public void delete_id(@PathVariable("student_id") Long student_id){
-        studentService.delete(student_id);
+    public Optional<Student> delete_id(@PathVariable("student_id") Long student_id){
+        return studentService.delete(student_id);
     }
 }

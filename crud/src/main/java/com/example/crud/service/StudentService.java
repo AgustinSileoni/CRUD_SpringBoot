@@ -26,8 +26,10 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-    public void delete(Long id){
+    public Optional<Student> delete(Long id){
+        Optional<Student> student = getStudent(id);
         studentRepository.deleteById(id);
+        return student;
     }
     
 }
